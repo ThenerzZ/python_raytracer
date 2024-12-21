@@ -4,30 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3dfe3fbb-a385-4de4-bb52-f774817c8100" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Pyhton_raytracer.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/raytracer/camera.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/raytracer/geometry.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/raytracer/lighting.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/raytracer/materials.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/raytracer/ray.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/raytracer/renderer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/raytracer/scene.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/raytracer/utils.py" afterDir="false" />
-    </list>
+    <list default="true" id="3dfe3fbb-a385-4de4-bb52-f774817c8100" name="Changes" comment="it works" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="v2" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/ThenerzZ/python_raytracer",
+    "accountId": "790c0d3d-c5e6-488d-84f7-ba601c59c380"
+  }
+}]]></component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 8
 }]]></component>
@@ -69,6 +65,27 @@
       <option name="presentableId" value="Default" />
       <updated>1734817472567</updated>
     </task>
+    <task id="LOCAL-00001" summary="it works">
+      <option name="closed" value="true" />
+      <created>1734819137805</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1734819137805</updated>
+    </task>
+    <task id="LOCAL-00002" summary="it works">
+      <option name="closed" value="true" />
+      <created>1734819153320</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1734819153320</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="it works" />
+    <option name="LAST_COMMIT_MESSAGE" value="it works" />
   </component>
 </project>
