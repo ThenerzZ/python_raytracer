@@ -1,5 +1,26 @@
 import numpy as np
 
+class BoundingBox:
+    def __init__(self, min_point, max_point):
+        self.min_point = np.array(min_point)
+        self.max_point = np.array(max_point)
+
+    def intersect(self, ray):
+        """
+        Checks if a ray intersects the bounding box.
+        """
+        inv_dir = 1.0 / ray.direction
+        t_min = (self.min_point - ray.origin) * inv_dir
+        t_max = (self.max_point - ray.origin) * inv_dir
+
+        t1 = np.minimum(t_min, t_max)
+        t2 = np.maximum(t_min, t_max)
+
+        t_near = np.max(t1)
+        t_far = np.min(t2)
+
+        return t_near < t_far and t_far > 0
+
 class Sphere:
     def __init__(self, center, radius, material):
         self.center = np.array(center)
@@ -8,7 +29,7 @@ class Sphere:
 
     def intersect(self, ray):
         """
-        Compute the intersection of the ray with the sphere.
+        Calculate the intersection of a ray with the sphere.
         """
         oc = ray.origin - self.center
         a = np.dot(ray.direction, ray.direction)
@@ -26,11 +47,12 @@ class Sphere:
         return None
 
     def get_normal(self, point):
-        """
-        Calculate the normal vector at a given point on the sphere's surface.
-        """
         return (point - self.center) / np.linalg.norm(point - self.center)
 
+    def bounding_box(self):
+        min_point = self.center - self.radius
+        max_point = self.center + self.radius
+        return BoundingBox(min_point, max_point)
 
 class Plane:
     def __init__(self, point, normal, material):
@@ -50,8 +72,44 @@ class Plane:
         return None
 
     def get_normal(self, _):
-        """
-        Return the normal of the plane. For a plane, the normal is constant
-        and does not depend on the hit point.
-        """
         return self.normal
+
+    def bounding_box(self):
+        size = 1e6  # Large value to approximate infinite plane
+        min_point = np.array([-size, -size, -size])
+        max_point = np.array([size, size, size])
+        return BoundingBox(min_point, max_point)
+
+class BVHNode:
+    def __init__(self, objects):
+        if len(objects) == 1:
+            self.objects = objects
+            self.bbox = objects[0].bounding_box()
+        else:
+            # Split objects and create child nodes
+            objects.sort(key=lambda obj: obj.bounding_box().min_point[0])
+            mid = len(objects) // 2
+            self.left = BVHNode(objects[:mid])
+            self.right = BVHNode(objects[mid:])
+            self.bbox = BoundingBox(
+                np.minimum(self.left.bbox.min_point, self.right.bbox.min_point),
+                np.maximum(self.left.bbox.max_point, self.right.bbox.max_point),
+            )
+
+    def intersect(self, ray):
+        if not self.bbox.intersect(ray):
+            return None, float('inf')
+        if hasattr(self, 'objects'):
+            closest_object, closest_t = None, float('inf')
+            for obj in self.objects:
+                t = obj.intersect(ray)
+                if t and t < closest_t:
+                    closest_object, closest_t = obj, t
+            return closest_object, closest_t
+        else:
+            left_hit, left_t = self.left.intersect(ray)
+            right_hit, right_t = self.right.intersect(ray)
+            if left_t < right_t:
+                return left_hit, left_t
+            return right_hit, right_t
+

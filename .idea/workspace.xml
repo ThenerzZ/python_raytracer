@@ -5,20 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3dfe3fbb-a385-4de4-bb52-f774817c8100" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Pyhton_raytracer.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/raytracer/camera.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/raytracer/geometry.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/raytracer/lighting.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/raytracer/materials.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/raytracer/ray.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/raytracer/renderer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/raytracer/scene.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/raytracer/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/raytracer/camera.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/camera.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/raytracer/geometry.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/geometry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/raytracer/materials.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/materials.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/raytracer/ray.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/ray.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/raytracer/renderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/renderer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/raytracer/scene.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/scene.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/raytracer/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,9 +23,15 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "ThenerzZ"
+  }
 }]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2qXmoqCATKd4Nhiqa41eIG10aXH" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -44,7 +45,7 @@
     "Python.scene.executor": "Run",
     "Python.utils.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master"
+    "git-widget-placeholder": "v2"
   }
 }]]></component>
   <component name="RecentsManager">
