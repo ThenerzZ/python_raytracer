@@ -112,4 +112,49 @@ class BVHNode:
             if left_t < right_t:
                 return left_hit, left_t
             return right_hit, right_t
+class Box:
+    def __init__(self, min_point, max_point, material):
+        self.min_point = np.array(min_point)
+        self.max_point = np.array(max_point)
+        self.material = material
+
+    def intersect(self, ray):
+        """
+        Ray-box intersection using the slab method.
+        """
+        inv_dir = 1.0 / ray.direction
+        t_min = (self.min_point - ray.origin) * inv_dir
+        t_max = (self.max_point - ray.origin) * inv_dir
+
+        t1 = np.minimum(t_min, t_max)
+        t2 = np.maximum(t_min, t_max)
+
+        t_near = np.max(t1)
+        t_far = np.min(t2)
+
+        if t_near > t_far or t_far < 0:
+            return None
+        return t_near
+
+    def get_normal(self, point):
+        """
+        Calculate the normal based on which face the point is on.
+        """
+        epsilon = 1e-4
+        if abs(point[0] - self.min_point[0]) < epsilon:
+            return np.array([-1, 0, 0])
+        if abs(point[0] - self.max_point[0]) < epsilon:
+            return np.array([1, 0, 0])
+        if abs(point[1] - self.min_point[1]) < epsilon:
+            return np.array([0, -1, 0])
+        if abs(point[1] - self.max_point[1]) < epsilon:
+            return np.array([0, 1, 0])
+        if abs(point[2] - self.min_point[2]) < epsilon:
+            return np.array([0, 0, -1])
+        if abs(point[2] - self.max_point[2]) < epsilon:
+            return np.array([0, 0, 1])
+        return np.array([0, 0, 0])  # Fallback
+
+    def bounding_box(self):
+        return BoundingBox(self.min_point, self.max_point)
 
