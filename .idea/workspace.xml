@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3dfe3fbb-a385-4de4-bb52-f774817c8100" name="Changes" comment="general quality improvements and scene changed to loo´k more like a actual room also made the sphere blue for contrast">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/raytracer/renderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/renderer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +24,7 @@
 }</component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
-    "url": "https://github.com/ThenerzZ/python_raytracer",
+    "url": "https://github.com/ThenerzZ/python_raytracer.git",
     "accountId": "790c0d3d-c5e6-488d-84f7-ba601c59c380"
   }
 }]]></component>
@@ -44,7 +45,8 @@
     "Python.utils.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "v2"
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true"
   }
 }]]></component>
   <component name="RecentsManager">

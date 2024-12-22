@@ -1,5 +1,9 @@
 import numpy as np
+import pycuda.autoinit
+import pycuda.driver as drv
+from pycuda.compiler import SourceModule
 from raytracer.ray import Ray
+
 
 class Renderer:
     def __init__(self, width, height, max_depth=5, samples_per_pixel=1, mode='preview'):
@@ -8,6 +12,7 @@ class Renderer:
         self.max_depth = max_depth
         self.samples_per_pixel = samples_per_pixel
 
+        # Adjust for preview or high-quality mode
         if mode == 'preview':
             self.width = self.base_width // 2
             self.height = self.base_height // 2
@@ -19,118 +24,130 @@ class Renderer:
         else:
             raise ValueError(f"Unknown mode: {mode}")
 
+        # Compile the CUDA kernel
+        self.kernel = self.cuda_kernel()
+        self.render_kernel = self.kernel.get_function("render")
+
     def render(self, scene, camera):
         aspect_ratio = self.width / self.height
-        pixels = np.zeros((self.height, self.width, 3))
+        pixels = np.zeros((self.height, self.width, 3), dtype=np.float32)
 
-        for y in range(self.height):
-            for x in range(self.width):
-                color = np.zeros(3)
-                for _ in range(self.samples_per_pixel):
-                    u = ((x + np.random.random()) / self.width - 0.5) * 2 * aspect_ratio
-                    v = (0.5 - (y + np.random.random()) / self.height) * 2
-                    ray = camera.get_ray(u, v)
-                    color += self.trace_ray(ray, scene)
+        # Prepare data for GPU
+        flat_pixels = pixels.ravel()
+        scene_data = self.prepare_scene(scene)
+        camera_data = np.array([camera.position, camera.forward, camera.up, camera.right], dtype=np.float32)
 
-                pixels[y, x] = np.clip(color / self.samples_per_pixel, 0, 1)
+        # Send data to GPU
+        scene_buffer = drv.In(scene_data)
+        camera_buffer = drv.In(camera_data)
+        output_buffer = drv.Out(flat_pixels)
 
-        # Apply gamma correction
-        gamma = 2.2
-        pixels = np.power(pixels, 1 / gamma)
+        # Launch CUDA kernel
+        self.render_kernel(
+            scene_buffer,
+            np.int32(len(scene.objects)),
+            camera_buffer,
+            np.int32(self.width),
+            np.int32(self.height),
+            np.int32(self.samples_per_pixel),
+            np.int32(self.max_depth),
+            output_buffer,
+            block=(16, 16, 1),
+            grid=(self.width // 16, self.height // 16, 1),
+        )
 
-        return pixels
+        # Reshape flat array back to image
+        pixels = flat_pixels.reshape((self.height, self.width, 3))
+        return np.clip(pixels, 0, 1)
 
-    def trace_ray(self, ray, scene, depth=0):
-        if depth > self.max_depth:
-            return np.array([0, 0, 0])  # Background color
+    def prepare_scene(self, scene):
+        # Convert scene objects into GPU-compatible data
+        objects = []
+        for obj in scene.objects:
+            if isinstance(obj, Sphere):
+                # Object type (0 for Sphere), position, radius, and material color
+                objects.append([0, *obj.center, obj.radius, *obj.material.color])
+            # Add other object types (e.g., planes, boxes) as needed
 
-        hit_object, t = scene.intersect(ray)
-        if hit_object:
-            hit_point = ray.point_at_parameter(t)
-            normal = hit_object.get_normal(hit_point)
-            view_dir = -ray.direction
+        return np.array(objects, dtype=np.float32)
 
-            # Compute lighting
-            material = hit_object.material
-            base_color = material.get_color(hit_point)
-            lighting = self.compute_lighting(hit_point, normal, scene, view_dir)
-            color = base_color * lighting
+    def cuda_kernel(self):
+        return SourceModule("""
+        #include <math.h>
 
-            # Add reflections
-            if material.reflectivity > 0:
-                reflection_dir = ray.direction - 2 * np.dot(ray.direction, normal) * normal
-                reflection_ray = Ray(hit_point + 1e-4 * reflection_dir, reflection_dir)
-                reflection_color = self.trace_ray(reflection_ray, scene, depth + 1)
-                color += material.reflectivity * reflection_color
+        __device__ float3 normalize(float3 v) {
+            float length = sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
+            return make_float3(v.x / length, v.y / length, v.z / length);
+        }
 
-            # Add transparency/refraction
-            if material.transparency > 0:
-                n = material.refractive_index
-                if np.dot(view_dir, normal) > 0:  # Inside the object
-                    n = 1 / n
-                    normal = -normal
-                cos_i = -np.dot(normal, view_dir)
-                sin_t2 = (n ** 2) * (1 - cos_i ** 2)
-                if sin_t2 <= 1:  # Total internal reflection check
-                    cos_t = np.sqrt(1 - sin_t2)
-                    refraction_dir = n * view_dir + (n * cos_i - cos_t) * normal
-                    refraction_ray = Ray(hit_point + 1e-4 * refraction_dir, refraction_dir)
-                    refraction_color = self.trace_ray(refraction_ray, scene, depth + 1)
-                    color += material.transparency * refraction_color
+        __device__ float dot(float3 a, float3 b) {
+            return a.x * b.x + a.y * b.y + a.z * b.z;
+        }
 
-            return np.clip(color, 0, 1)
+        __device__ float3 reflect(float3 dir, float3 normal) {
+            return dir - 2.0f * dot(dir, normal) * normal;
+        }
 
-        return np.array([0, 0, 0])  # Background color
+        __global__ void render(
+            float *scene_data, int num_objects,
+            float *camera_data,
+            int width, int height,
+            int samples_per_pixel, int max_depth,
+            float *output
+        ) {
+            int x = blockIdx.x * blockDim.x + threadIdx.x;
+            int y = blockIdx.y * blockDim.y + threadIdx.y;
 
-    def compute_lighting(self, point, normal, scene, view_dir):
-        intensity = 0
-        shadow_samples = 16  # For soft shadows
+            if (x >= width || y >= height) return;
 
-        for light in scene.lights:
-            light_dir = light.position - point
-            light_dist = np.linalg.norm(light_dir)
-            light_dir = light_dir / light_dist
+            int idx = (y * width + x) * 3;
 
-            shadow_intensity = 0
-            for _ in range(shadow_samples):
-                jitter = np.random.normal(scale=0.1, size=3)  # Jitter for soft shadows
-                shadow_ray_dir = light_dir + jitter
-                shadow_ray_dir = shadow_ray_dir / np.linalg.norm(shadow_ray_dir)
+            // Compute ray direction
+            float u = (float(x) / width - 0.5f) * 2.0f;
+            float v = (0.5f - float(y) / height) * 2.0f;
 
-                shadow_ray = Ray(point + 1e-4 * shadow_ray_dir, shadow_ray_dir)
-                shadow_hit, shadow_t = scene.intersect(shadow_ray)
-                if not shadow_hit or shadow_t > light_dist:
-                    shadow_intensity += 1
+            float3 origin = make_float3(camera_data[0], camera_data[1], camera_data[2]);
+            float3 direction = normalize(make_float3(u, v, -1.0f));
 
-            shadow_intensity /= shadow_samples
+            // Initialize color
+            float3 color = make_float3(0.0f, 0.0f, 0.0f);
 
-            # Diffuse lighting
-            diffuse = max(np.dot(normal, light_dir), 0) * shadow_intensity
-            intensity += light.intensity * diffuse
+            for (int sample = 0; sample < samples_per_pixel; sample++) {
+                // Basic ray tracing loop (example for spheres)
+                float t_min = 1e-4f;
+                float t_max = 1e30f;
 
-            # Specular lighting
-            reflect_dir = 2 * np.dot(normal, light_dir) * normal - light_dir
-            specular = max(np.dot(view_dir, reflect_dir), 0) ** 50  # Shininess factor
-            intensity += light.intensity * specular
+                // Iterate over objects
+                for (int i = 0; i < num_objects; i++) {
+                    float3 center = make_float3(scene_data[i * 7 + 1], scene_data[i * 7 + 2], scene_data[i * 7 + 3]);
+                    float radius = scene_data[i * 7 + 4];
+                    float3 oc = origin - center;
+                    float a = dot(direction, direction);
+                    float b = dot(oc, direction) * 2.0f;
+                    float c = dot(oc, oc) - radius * radius;
+                    float discriminant = b * b - 4 * a * c;
 
-        # Ambient occlusion
-        ao = self.compute_ambient_occlusion(point, normal, scene)
-        intensity *= ao
+                    if (discriminant > 0) {
+                        float t = (-b - sqrt(discriminant)) / (2.0f * a);
+                        if (t > t_min && t < t_max) {
+                            t_max = t;
 
-        return intensity
+                            // Shading (diffuse only for now)
+                            float3 hit_point = origin + t * direction;
+                            float3 normal = normalize(hit_point - center);
+                            float3 light_dir = normalize(make_float3(1, 1, -1)); // Hardcoded light
+                            float diffuse = fmaxf(dot(normal, light_dir), 0.0f);
 
-    def compute_ambient_occlusion(self, point, normal, scene, samples=8, radius=1.0):
-        occlusion = 0
-        for _ in range(samples):
-            sample_dir = np.random.normal(size=3)
-            sample_dir = sample_dir / np.linalg.norm(sample_dir)
-            if np.dot(sample_dir, normal) < 0:
-                sample_dir = -sample_dir  # Ensure hemisphere sampling
+                            color += diffuse * make_float3(scene_data[i * 7 + 5], scene_data[i * 7 + 6], scene_data[i * 7 + 7]);
+                        }
+                    }
+                }
+            }
 
-            sample_point = point + radius * sample_dir
-            occlusion_ray = Ray(point + 1e-4 * sample_dir, sample_dir)
-            hit, _ = scene.intersect(occlusion_ray)
-            if hit:
-                occlusion += 1
-
-        return 1 - (occlusion / samples)
+            // Average samples and write to output
+            color /= samples_per_pixel;
+            output[idx] = color.x;
+            output[idx + 1] = color.y;
+            output[idx + 2] = color.z;
+        }
+        """)
