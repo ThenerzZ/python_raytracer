@@ -1,101 +1,147 @@
-Python Ray Tracer
+# **Python Ray Tracer**
 
-A simple yet extensible ray tracing engine written in Python. This project showcases fundamental ray tracing concepts, including realistic lighting, shadows, reflections, and refraction. The engine renders a 3D scene with objects, materials, and light sources into a 2D image.
+Welcome to the **Python Ray Tracer**! This project is a lightweight and extensible ray tracing engine that renders realistic 3D scenes. From simulating reflections to soft shadows and ambient occlusion, this engine captures the fundamentals of ray tracing in Python.
 
-Features
-Realistic Lighting: Supports diffuse and specular lighting with soft shadows.
-Reflections and Refraction: Simulates shiny and transparent materials for realistic rendering.
-Ambient Occlusion: Adds depth and realism by simulating indirect lighting in shadowed areas.
-Customizable Materials: Easily define object materials with attributes like color, reflectivity, transparency, and shininess.
-Basic Geometry: Supports spheres, planes, and boxes. Extensible for additional shapes.
-BVH Optimization: Uses Bounding Volume Hierarchies (BVH) for efficient ray-object intersection tests.
-Multi-Sampling Anti-Aliasing: Smoothens edges by averaging multiple rays per pixel.
-Gamma Correction: Ensures the final image has realistic brightness and contrast.
+---
 
+## **Features**
 
-Getting Started:
+✨ **Realistic Lighting**: Supports diffuse, specular, and soft shadows.  
+✨ **Reflections and Refraction**: Handles shiny and transparent materials like glass.  
+✨ **Ambient Occlusion**: Adds depth to shadowed regions.  
+✨ **Anti-Aliasing**: Smoothens edges with multi-sampling.  
+✨ **Gamma Correction**: Ensures realistic brightness and contrast.  
+✨ **BVH Optimization**: Speeds up ray-object intersections.  
+✨ **Customizable Materials**: Easily tweak colors, reflectivity, and more.
 
-Prerequisites
-Python 3.8 or higher
+---
 
-Libraries:
-numpy
-matplotlib
+## **Getting Started**
 
-To install the required libraries:
-pip install numpy matplotlib
+### **Prerequisites**
 
-Installation
+Before you start, make sure you have:
+- **Python 3.8 or higher**
+- The following libraries installed:
+  ```bash
+  pip install numpy matplotlib
+  ```
 
-Clone the repository:
-git clone https://github.com/your-username/python-ray-tracer.git
-cd python-ray-tracer
+### **Installation**
 
-Run the main script:
-python main.py
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/your-username/python-ray-tracer.git
+   cd python-ray-tracer
+   ```
+2. Run the main script:
+   ```bash
+   python main.py
+   ```
 
-Project Structure
+---
 
-├── main.py                   # Entry point for the ray tracer
-├── raytracer
-│   ├── camera.py             # Camera class for generating rays
-│   ├── renderer.py           # Main rendering engine
-│   ├── scene.py              # Scene class to manage objects and lights
+## **How It Works**
+
+### **1. Scene Setup**
+Define a scene by adding:
+- Objects like spheres, planes, and boxes.
+- Light sources with adjustable position and intensity.
+- Materials with customizable properties like color, reflectivity, and transparency.
+
+### **2. Rendering**
+- The `Renderer` computes how rays interact with objects, materials, and lights.
+- Advanced features like reflections, refraction, and ambient occlusion are supported.
+
+### **3. Output**
+- The rendered 3D scene is displayed as a 2D image using `matplotlib`.
+
+---
+
+## **Project Structure**
+
+```
+.
+├── main.py                   # Entry point of the application
+├── raytracer/
+│   ├── camera.py             # Defines the camera for ray generation
+│   ├── renderer.py           # Main rendering logic
+│   ├── scene.py              # Manages objects and lights in the scene
 │   ├── ray.py                # Ray class
-│   ├── geometry.py           # Geometric objects (Sphere, Box, etc.)
-│   ├── lighting.py           # Light sources
-│   ├── materials.py          # Material properties
+│   ├── geometry.py           # Sphere, Box, and other shapes
+│   ├── lighting.py           # Defines light sources
+│   ├── materials.py          # Material definitions
 │   ├── utils.py              # Utility functions (e.g., textures)
-├── README.md                 # Project documentation
+```
 
+---
 
-How It Works
+## **Features in Detail**
 
-Scene Setup:
+### **Lighting**
+- Diffuse and specular lighting based on the Phong reflection model.
+- Soft shadows using multiple jittered rays to simulate area lights.
 
-Define a scene by adding objects (e.g., spheres, boxes) and light sources.
-Customize materials for objects, including color, reflectivity, and transparency.
-Rendering:
+### **Reflections and Refraction**
+- Reflections allow for shiny surfaces like metals.
+- Refraction simulates transparency, supporting custom refractive indices.
 
-The Renderer generates rays for each pixel, computes intersections, and calculates lighting.
-Supports advanced features like reflections, refraction, and ambient occlusion.
-Output:
+### **Ambient Occlusion**
+- Adds realism by darkening corners and occluded areas.
 
-The final rendered image is displayed using matplotlib.
-Features in Detail
-Lighting
-Supports diffuse lighting (Lambertian reflection) and specular highlights (Phong model).
-Soft shadows are achieved by jittering shadow rays to simulate area light sources.
-Reflections and Refraction
-Realistic reflections for shiny materials.
-Refraction for transparent materials like glass, with support for custom refractive indices.
-Ambient Occlusion
-Simulates indirect lighting by darkening occluded areas.
-Anti-Aliasing
-Multi-sampling smoothens edges by averaging colors of rays jittered within each pixel.
-Gamma Correction
-Corrects image brightness for realistic tone mapping.
-Example Scene
-The default scene renders a room with:
+### **Anti-Aliasing**
+- Multi-sampling smoothens jagged edges for high-quality renders.
 
-Gray walls, ceiling, and floor
-A shiny blue sphere in the center
-A single light source illuminating the room
-You can customize the scene by modifying main.py.
+### **Gamma Correction**
+- Corrects brightness to make the final image look more natural.
 
-Future Improvements
-Add support for complex 3D models (e.g., OBJ file loading).
-Implement more advanced materials like metallic and subsurface scattering.
-Add global illumination for realistic indirect lighting.
-Contributing
-Contributions are welcome! If you have suggestions or find bugs, feel free to open an issue or submit a pull request.
+---
 
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
+## **Example Scene**
 
-Contact
-For questions or feedback, reach out to:
+The default scene renders:
+- A gray room (walls, floor, and ceiling).
+- A shiny blue sphere in the center.
+- A light source behind the camera, illuminating the room.
 
-Name: Fabian Wegner
-Email: thenerz_lunix@proton.me
-GitHub: ThenerzZ
+Rendered output:
+
+![Rendered Scene](example.png)  
+*(Replace this with an actual screenshot of your render!)*
+
+---
+
+## **Future Improvements**
+
+Here are some exciting ideas for extending this project:
+1. Add support for loading complex 3D models (e.g., OBJ files).
+2. Implement advanced materials like metallic surfaces or subsurface scattering.
+3. Introduce global illumination for realistic indirect lighting.
+
+---
+
+## **Contributing**
+
+We’d love your help! If you’ve got an idea or spot a bug, feel free to:
+- Open an **issue**.
+- Submit a **pull request**.
+
+---
+
+## **License**
+
+This project is licensed under the MIT License. Check the [LICENSE](LICENSE) file for details.
+
+---
+
+## **Contact**
+
+Have questions or feedback?  
+Reach out here:
+- **Name**: Your Name  
+- **Email**: your.email@example.com  
+- **GitHub**: [your-username](https://github.com/your-username)
+
+---
+
+This README balances clarity and aesthetics, ensuring your project makes a great first impression. Let me know if you'd like to add anything else!
