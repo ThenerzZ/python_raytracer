@@ -106,7 +106,7 @@ The default scene renders:
 
 Rendered output:
 
-![Rendered Scene](https://imgur.com/a/wa2LmHh)  
+![Rendered Scene](https://i.imgur.com/3I8NUur.png)  
 
 
 ---
