@@ -1,4 +1,4 @@
-from raytracer.geometry import BVHNode
+from raytracer.geometry import BVHNode, Sphere, Plane
 
 class Scene:
     def __init__(self):
@@ -86,3 +86,17 @@ class Scene:
         list: The light sources in the scene.
         """
         return self.lights
+
+    def setup_default_scene(self):
+        """
+        Sets up a default scene with a sphere and walls to form a room.
+        """
+        # Add a central sphere
+        self.add(Sphere(center=[0.0, -1.0, -5.0], radius=1.0, material={"color": [1.0, 0.0, 0.0]}))
+
+        # Add walls to the scene
+        self.add(Plane(point=[-5.0, 0.0, 0.0], normal=[1.0, 0.0, 0.0], material={"color": [0.7, 0.7, 0.7]}))  # Left wall
+        self.add(Plane(point=[5.0, 0.0, 0.0], normal=[-1.0, 0.0, 0.0], material={"color": [0.7, 0.7, 0.7]}))  # Right wall
+        self.add(Plane(point=[0.0, 0.0, -10.0], normal=[0.0, 0.0, 1.0], material={"color": [0.7, 0.7, 0.7]}))  # Back wall
+        self.add(Plane(point=[0.0, -1.0, 0.0], normal=[0.0, 1.0, 0.0], material={"color": [0.8, 0.8, 0.8]}))  # Floor
+        self.add(Plane(point=[0.0, 3.0, 0.0], normal=[0.0, -1.0, 0.0], material={"color": [0.8, 0.8, 0.8]}))  # Ceiling

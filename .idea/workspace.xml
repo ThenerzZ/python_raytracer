@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3dfe3fbb-a385-4de4-bb52-f774817c8100" name="Changes" comment="implementing cuda">
+    <list default="true" id="3dfe3fbb-a385-4de4-bb52-f774817c8100" name="Changes" comment="implementing cuda and fixing the scene to make it a sphere in a grey room again">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/raytracer/camera.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/camera.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/raytracer/renderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/renderer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/raytracer/scene.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/scene.py" afterDir="false" />
     </list>
@@ -117,13 +116,22 @@
       <option name="project" value="LOCAL" />
       <updated>1734892718960</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="implementing cuda and fixing the scene to make it a sphere in a grey room again">
+      <option name="closed" value="true" />
+      <created>1734896245491</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1734896245491</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="master branch" />
     <MESSAGE value="general quality improvements and scene changed to loo´k more like a actual room also made the sphere blue for contrast" />
     <MESSAGE value="implementing cuda" />
-    <option name="LAST_COMMIT_MESSAGE" value="implementing cuda" />
+    <MESSAGE value="implementing cuda and fixing the scene to make it a sphere in a grey room again" />
+    <option name="LAST_COMMIT_MESSAGE" value="implementing cuda and fixing the scene to make it a sphere in a grey room again" />
   </component>
 </project>
