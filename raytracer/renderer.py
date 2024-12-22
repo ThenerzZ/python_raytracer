@@ -4,7 +4,6 @@ import pycuda.driver as drv
 from pycuda.compiler import SourceModule
 from raytracer.ray import Ray
 
-
 class Renderer:
     def __init__(self, width, height, max_depth=5, samples_per_pixel=1, mode='preview'):
         self.base_width = width
@@ -53,7 +52,7 @@ class Renderer:
             np.int32(self.max_depth),
             output_buffer,
             block=(16, 16, 1),
-            grid=(self.width // 16, self.height // 16, 1),
+            grid=(self.width // 16 + 1, self.height // 16 + 1, 1),
         )
 
         # Reshape flat array back to image
@@ -74,6 +73,7 @@ class Renderer:
     def cuda_kernel(self):
         return SourceModule("""
         #include <math.h>
+        #include <cuda_runtime.h>
 
         __device__ float3 normalize(float3 v) {
             float length = sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
@@ -85,7 +85,11 @@ class Renderer:
         }
 
         __device__ float3 reflect(float3 dir, float3 normal) {
-            return dir - 2.0f * dot(dir, normal) * normal;
+            return make_float3(
+                dir.x - 2.0f * dot(dir, normal) * normal.x,
+                dir.y - 2.0f * dot(dir, normal) * normal.y,
+                dir.z - 2.0f * dot(dir, normal) * normal.z
+            );
         }
 
         __global__ void render(
@@ -102,28 +106,24 @@ class Renderer:
 
             int idx = (y * width + x) * 3;
 
-            // Compute ray direction
             float u = (float(x) / width - 0.5f) * 2.0f;
             float v = (0.5f - float(y) / height) * 2.0f;
 
             float3 origin = make_float3(camera_data[0], camera_data[1], camera_data[2]);
             float3 direction = normalize(make_float3(u, v, -1.0f));
 
-            // Initialize color
             float3 color = make_float3(0.0f, 0.0f, 0.0f);
 
             for (int sample = 0; sample < samples_per_pixel; sample++) {
-                // Basic ray tracing loop (example for spheres)
                 float t_min = 1e-4f;
                 float t_max = 1e30f;
 
-                // Iterate over objects
                 for (int i = 0; i < num_objects; i++) {
                     float3 center = make_float3(scene_data[i * 7 + 1], scene_data[i * 7 + 2], scene_data[i * 7 + 3]);
                     float radius = scene_data[i * 7 + 4];
-                    float3 oc = origin - center;
+                    float3 oc = make_float3(origin.x - center.x, origin.y - center.y, origin.z - center.z);
                     float a = dot(direction, direction);
-                    float b = dot(oc, direction) * 2.0f;
+                    float b = 2.0f * dot(oc, direction);
                     float c = dot(oc, oc) - radius * radius;
                     float discriminant = b * b - 4 * a * c;
 
@@ -132,20 +132,25 @@ class Renderer:
                         if (t > t_min && t < t_max) {
                             t_max = t;
 
-                            // Shading (diffuse only for now)
-                            float3 hit_point = origin + t * direction;
-                            float3 normal = normalize(hit_point - center);
-                            float3 light_dir = normalize(make_float3(1, 1, -1)); // Hardcoded light
-                            float diffuse = fmaxf(dot(normal, light_dir), 0.0f);
+                            float3 hit_point = make_float3(origin.x + t * direction.x, origin.y + t * direction.y, origin.z + t * direction.z);
+                            float3 normal = normalize(make_float3(hit_point.x - center.x, hit_point.y - center.y, hit_point.z - center.z));
+                            float3 light_dir = normalize(make_float3(1, 1, -1));
 
-                            color += diffuse * make_float3(scene_data[i * 7 + 5], scene_data[i * 7 + 6], scene_data[i * 7 + 7]);
+                            float diffuse = fmaxf(dot(normal, light_dir), 0.0f);
+                            color = make_float3(
+                                color.x + diffuse * scene_data[i * 7 + 5],
+                                color.y + diffuse * scene_data[i * 7 + 6],
+                                color.z + diffuse * scene_data[i * 7 + 7]
+                            );
                         }
                     }
                 }
             }
 
-            // Average samples and write to output
-            color /= samples_per_pixel;
+            color.x /= samples_per_pixel;
+            color.y /= samples_per_pixel;
+            color.z /= samples_per_pixel;
+
             output[idx] = color.x;
             output[idx + 1] = color.y;
             output[idx + 2] = color.z;

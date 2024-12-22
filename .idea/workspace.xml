@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3dfe3fbb-a385-4de4-bb52-f774817c8100" name="Changes" comment="general quality improvements and scene changed to loo´k more like a actual room also made the sphere blue for contrast">
+    <list default="true" id="3dfe3fbb-a385-4de4-bb52-f774817c8100" name="Changes" comment="implementing cuda">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/raytracer/renderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/renderer.py" afterDir="false" />
     </list>
@@ -22,12 +22,12 @@
     &quot;assignee&quot;: &quot;ThenerzZ&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/ThenerzZ/python_raytracer.git",
-    "accountId": "790c0d3d-c5e6-488d-84f7-ba601c59c380"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ThenerzZ/python_raytracer.git&quot;,
+    &quot;accountId&quot;: &quot;790c0d3d-c5e6-488d-84f7-ba601c59c380&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -42,15 +42,18 @@
     "Python.main.executor": "Run",
     "Python.renderer.executor": "Run",
     "Python.scene.executor": "Run",
+    "Python.test.executor": "Run",
     "Python.utils.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true"
+    "ignore.virus.scanning.warn.message": "true",
+    "settings.editor.selected.configurable": "preferences.fileTypes"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\python_raytracer" />
       <recent name="E:\Pyhton_raytracer" />
       <recent name="E:\Pyhton_raytracer\raytracer" />
     </key>
@@ -87,12 +90,21 @@
       <option name="project" value="LOCAL" />
       <updated>1734825315462</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="implementing cuda">
+      <option name="closed" value="true" />
+      <created>1734868867115</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1734868867115</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="master branch" />
     <MESSAGE value="general quality improvements and scene changed to loo´k more like a actual room also made the sphere blue for contrast" />
-    <option name="LAST_COMMIT_MESSAGE" value="general quality improvements and scene changed to loo´k more like a actual room also made the sphere blue for contrast" />
+    <MESSAGE value="implementing cuda" />
+    <option name="LAST_COMMIT_MESSAGE" value="implementing cuda" />
   </component>
 </project>
