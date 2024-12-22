@@ -106,8 +106,9 @@ The default scene renders:
 
 Rendered output:
 
-![Rendered Scene](example.png)  
-*(Replace this with an actual screenshot of your render!)*
+![Rendered Scene](![preview](https://github.com/user-attachments/assets/0893f94a-5677-40e0-875d-ea776cd0f015)
+)  
+
 
 ---
 
