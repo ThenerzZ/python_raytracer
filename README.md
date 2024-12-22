@@ -144,4 +144,3 @@ Reach out here:
 
 ---
 
-This README balances clarity and aesthetics, ensuring your project makes a great first impression. Let me know if you'd like to add anything else!
