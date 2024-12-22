@@ -1,4 +1,5 @@
 Python Ray Tracer
+
 A simple yet extensible ray tracing engine written in Python. This project showcases fundamental ray tracing concepts, including realistic lighting, shadows, reflections, and refraction. The engine renders a 3D scene with objects, materials, and light sources into a 2D image.
 
 Features
@@ -10,7 +11,9 @@ Basic Geometry: Supports spheres, planes, and boxes. Extensible for additional s
 BVH Optimization: Uses Bounding Volume Hierarchies (BVH) for efficient ray-object intersection tests.
 Multi-Sampling Anti-Aliasing: Smoothens edges by averaging multiple rays per pixel.
 Gamma Correction: Ensures the final image has realistic brightness and contrast.
-Getting Started
+
+
+Getting Started:
 Prerequisites
 Python 3.8 or higher
 Libraries:
@@ -18,14 +21,14 @@ numpy
 matplotlib
 To install the required libraries:
 
+
 bash
-Code kopieren
 pip install numpy matplotlib
 Installation
 Clone the repository:
 
+
 bash
-Code kopieren
 git clone https://github.com/your-username/python-ray-tracer.git
 cd python-ray-tracer
 Run the main script:
@@ -34,9 +37,6 @@ bash
 Code kopieren
 python main.py
 Project Structure
-bash
-Code kopieren
-.
 ├── main.py                   # Entry point for the ray tracer
 ├── raytracer
 │   ├── camera.py             # Camera class for generating rays
@@ -48,6 +48,8 @@ Code kopieren
 │   ├── materials.py          # Material properties
 │   ├── utils.py              # Utility functions (e.g., textures)
 ├── README.md                 # Project documentation
+
+
 How It Works
 Scene Setup:
 
@@ -94,7 +96,6 @@ This project is licensed under the MIT License. See the LICENSE file for details
 Contact
 For questions or feedback, reach out to:
 
-Name: Your Name
-Email: your.email@example.com
-GitHub: your-username
-Preview
+Name: Fabian Wegner
+Email: thenerz_lunix@proton.me
+GitHub: ThenerzZ
