@@ -31,7 +31,7 @@ pip install numpy matplotlib
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/your-username/python-ray-tracer.git
+   git clone the master branch
    cd python-ray-tracer
    ```
 
