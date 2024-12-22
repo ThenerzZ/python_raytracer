@@ -31,7 +31,7 @@ Before you start, make sure you have:
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/your-username/python-ray-tracer.git
+   git clone https://github.com/ThenerzZ/python_raytracer.git
    cd python-ray-tracer
    ```
 2. Run the main script:
@@ -138,9 +138,9 @@ This project is licensed under the MIT License. Check the [LICENSE](LICENSE) fil
 
 Have questions or feedback?  
 Reach out here:
-- **Name**: Your Name  
-- **Email**: your.email@example.com  
-- **GitHub**: [your-username](https://github.com/your-username)
+- **Name**: Fabian Wegner  
+- **Email**: thenerz_lunix@proton.me  
+- **GitHub**: ThenerzZ
 
 ---
 
