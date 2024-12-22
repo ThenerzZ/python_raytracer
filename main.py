@@ -1,69 +1,53 @@
-from raytracer.camera import Camera
-from raytracer.renderer import Renderer
-from raytracer.scene import Scene
-from raytracer.geometry import Sphere, Box
-from raytracer.lighting import Light
-from raytracer.materials import Material
 import matplotlib.pyplot as plt
+from raytracer.renderer import Renderer
+from raytracer.camera import Camera
+from raytracer.scene import Scene
+from raytracer.geometry import Sphere, Plane
+from raytracer.material import Material
 
 
-def main(mode='preview'):
-    # Create the scene
+def main():
+    # Renderer settings
+    width, height = 800, 450
+    samples_per_pixel = 16
+
+    # Set up the scene
     scene = Scene()
 
     # Materials
-    room_material = Material(color=[0.3, 0.3, 0.3], reflectivity=0)  # Darker gray for walls, ceiling, and floor
-    sphere_material = Material(color=[0.1, 0.1, 0.8], reflectivity=0.5)  # Shiny blue sphere
+    grey_wall = Material(color=[0.5, 0.5, 0.5])  # Grey walls
+    blue_sphere = Material(color=[0.0, 0.0, 1.0])  # Blue sphere
 
     # Add objects to the scene
-    # Floor
-    floor = Box(min_point=[-5, 0, -5], max_point=[5, 0.1, 5], material=room_material)
-    scene.add_object(floor)
+    scene.add(Sphere(center=[0, 0, -5], radius=1, material=blue_sphere))  # Sphere in the center of the room
+    scene.add(Plane(point=[0, -1, 0], normal=[0, 1, 0], material=grey_wall))  # Floor
+    scene.add(Plane(point=[0, 1, 0], normal=[0, -1, 0], material=grey_wall))  # Ceiling
+    scene.add(Plane(point=[0, 0, -10], normal=[0, 0, 1], material=grey_wall))  # Back wall
+    scene.add(Plane(point=[-5, 0, 0], normal=[1, 0, 0], material=grey_wall))  # Left wall
+    scene.add(Plane(point=[5, 0, 0], normal=[-1, 0, 0], material=grey_wall))  # Right wall
 
-    # Walls
-    left_wall = Box(min_point=[-5, 0, -5], max_point=[-4.9, 5, 5], material=room_material)
-    right_wall = Box(min_point=[4.9, 0, -5], max_point=[5, 5, 5], material=room_material)
-    back_wall = Box(min_point=[-5, 0, -5], max_point=[5, 5, -4.9], material=room_material)
-    ceiling = Box(min_point=[-5, 4.9, -5], max_point=[5, 5, 5], material=room_material)
+    # Lighting
+    scene.add_light(position=[0, 2, 0], color=[1.0, 1.0, 1.0], intensity=2.0)  # Light source above the room
 
-    scene.add_object(left_wall)
-    scene.add_object(right_wall)
-    scene.add_object(back_wall)
-    scene.add_object(ceiling)
-
-    # Sphere
-    sphere = Sphere(center=[0, 1, 0], radius=1, material=sphere_material)
-    scene.add_object(sphere)
-
-    # Add a light source behind the camera
-    light = Light(position=[0, 3, 5], intensity=3.0)  # Adjusted intensity and position
-    scene.add_light(light)
-
-    # Build BVH for optimization
-    scene.build_bvh()
-
-    # Create the camera inside the room
+    # Set up the camera
     camera = Camera(
-        position=[0, 2, 4],  # Positioned inside the room
-        look_at=[0, 1, 0],   # Looking at the sphere
-        up=[0, 1, 0],        # Up direction
-        fov=60,              # Field of view
-        aspect_ratio=16 / 9
+        position=[0, 0, 5],  # Camera position in the room
+        forward=[0, 0, -1],  # Looking towards the sphere
+        right=[1, 0, 0],     # Camera's right direction
+        up=[0, 1, 0]         # Camera's up direction
     )
 
     # Create the renderer
-    renderer = Renderer(width=800, height=450, max_depth=3, samples_per_pixel=16, mode=mode)
+    renderer = Renderer(width, height, samples_per_pixel)
 
     # Render the scene
     image = renderer.render(scene, camera)
 
-    # Display the rendered image
-    plt.figure(figsize=(10, 5))
-    plt.title(f"Render Mode: {mode}")
+    # Display the image
     plt.imshow(image)
-    plt.axis('off')
+    plt.axis("off")
     plt.show()
 
 
 if __name__ == "__main__":
-    main(mode='preview')  # Render the room with a sphere and light source
+    main()
