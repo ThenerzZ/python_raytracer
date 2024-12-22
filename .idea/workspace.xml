@@ -7,7 +7,9 @@
     <list default="true" id="3dfe3fbb-a385-4de4-bb52-f774817c8100" name="Changes" comment="implementing cuda">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/raytracer/camera.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/camera.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/raytracer/renderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/renderer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/raytracer/scene.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/scene.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +109,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734891245776</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="implementing cuda">
+      <option name="closed" value="true" />
+      <created>1734892718960</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1734892718960</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
