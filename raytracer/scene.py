@@ -1,102 +1,55 @@
-from raytracer.geometry import BVHNode, Sphere, Plane
-
 class Scene:
     def __init__(self):
-        """
-        Initialize the scene with empty lists for objects and lights.
-        A BVH (Bounding Volume Hierarchy) is used for efficient ray intersection.
-        """
-        self.objects = []  # List to store geometric objects (e.g., Sphere, Plane)
-        self.lights = []   # List to store light sources
-        self.bvh = None    # BVH structure for optimized intersection
+        self.objects = []  # List to hold objects (e.g., spheres, planes)
+        self.lights = []   # List to hold light sources
 
     def add(self, obj):
         """
-        Adds an object to the scene (either a geometric object or a light source).
-
-        Parameters:
-        obj (object): The object to add (e.g., Sphere, Plane, or Light).
+        Add an object or light to the scene.
+        If it's a dictionary with light attributes, add to lights.
+        Otherwise, add to objects.
         """
         if isinstance(obj, dict) and "position" in obj and "color" in obj and "intensity" in obj:
-            # If obj has light attributes, treat it as a light source
-            self.add_light(**obj)
+            self.lights.append(obj)
         else:
-            # Otherwise, treat it as a geometric object
-            self.add_object(obj)
-
-    def add_object(self, obj):
-        """
-        Adds a geometric object to the scene.
-
-        Parameters:
-        obj (object): The geometric object to add.
-        """
-        self.objects.append(obj)
-
-    def add_light(self, position, color, intensity):
-        """
-        Adds a light source to the scene.
-
-        Parameters:
-        position (list): Light position [x, y, z].
-        color (list): Light color [r, g, b].
-        intensity (float): Light intensity.
-        """
-        self.lights.append({
-            'position': position,
-            'color': color,
-            'intensity': intensity
-        })
-
-    def build_bvh(self):
-        """
-        Builds the Bounding Volume Hierarchy (BVH) for efficient ray intersections.
-        """
-        if self.objects:
-            self.bvh = BVHNode(self.objects)
-
-    def intersect(self, ray):
-        """
-        Intersects a ray with the scene's objects using the BVH.
-
-        Parameters:
-        ray (Ray): The ray to test for intersection.
-
-        Returns:
-        Intersection: The closest intersection, or None if no intersection occurs.
-        """
-        if self.bvh is None:
-            raise ValueError("BVH is not built. Call `build_bvh` before rendering.")
-        return self.bvh.intersect(ray)
+            self.objects.append(obj)
 
     def get_objects(self):
         """
-        Returns the list of objects in the scene.
-
-        Returns:
-        list: The geometric objects in the scene.
+        Return the list of objects in the scene.
         """
         return self.objects
 
     def get_lights(self):
         """
-        Returns the list of light sources in the scene.
-
-        Returns:
-        list: The light sources in the scene.
+        Return the list of lights in the scene.
         """
         return self.lights
 
-    def setup_default_scene(self):
+    def serialize_objects(self):
         """
-        Sets up a default scene with a sphere and walls to form a room.
+        Serialize the objects into a NumPy-compatible format.
+        Each object must have its type, properties, and material serialized.
         """
-        # Add a central sphere
-        self.add(Sphere(center=[0.0, -1.0, -5.0], radius=1.0, material={"color": [1.0, 0.0, 0.0]}))
+        serialized_objects = []
+        for obj in self.objects:
+            if isinstance(obj, Sphere):
+                # Serialize sphere: [type, center_x, center_y, center_z, radius, material_color_r, g, b, shininess]
+                serialized_objects.append([1, *obj.center, obj.radius, *obj.material.color, obj.material.shininess])
+            elif isinstance(obj, Plane):
+                # Serialize plane: [type, point_x, point_y, point_z, normal_x, normal_y, normal_z, material_color_r, g, b, shininess]
+                serialized_objects.append([2, *obj.point, *obj.normal, *obj.material.color, obj.material.shininess])
+            else:
+                raise ValueError(f"Unsupported object type: {type(obj)}")
 
-        # Add walls to the scene
-        self.add(Plane(point=[-5.0, 0.0, 0.0], normal=[1.0, 0.0, 0.0], material={"color": [0.7, 0.7, 0.7]}))  # Left wall
-        self.add(Plane(point=[5.0, 0.0, 0.0], normal=[-1.0, 0.0, 0.0], material={"color": [0.7, 0.7, 0.7]}))  # Right wall
-        self.add(Plane(point=[0.0, 0.0, -10.0], normal=[0.0, 0.0, 1.0], material={"color": [0.7, 0.7, 0.7]}))  # Back wall
-        self.add(Plane(point=[0.0, -1.0, 0.0], normal=[0.0, 1.0, 0.0], material={"color": [0.8, 0.8, 0.8]}))  # Floor
-        self.add(Plane(point=[0.0, 3.0, 0.0], normal=[0.0, -1.0, 0.0], material={"color": [0.8, 0.8, 0.8]}))  # Ceiling
+        return np.array(serialized_objects, dtype=np.float32)
+
+    def serialize_lights(self):
+        """
+        Serialize the lights into a NumPy-compatible format.
+        Each light should have its position, color, and intensity serialized.
+        """
+        serialized_lights = []
+        for light in self.lights:
+            serialized_lights.extend(light["position"] + light["color"] + [light["intensity"]])
+        return np.array(serialized_lights, dtype=np.float32)
