@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3dfe3fbb-a385-4de4-bb52-f774817c8100" name="Changes" comment="master branch">
+    <list default="true" id="3dfe3fbb-a385-4de4-bb52-f774817c8100" name="Changes" comment="general quality improvements and scene changed to loo´k more like a actual room also made the sphere blue for contrast">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/raytracer/geometry.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/geometry.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/raytracer/materials.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/materials.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/raytracer/renderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/renderer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,10 +15,16 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "ThenerzZ"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ThenerzZ&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/ThenerzZ/python_raytracer",
+    "accountId": "790c0d3d-c5e6-488d-84f7-ba601c59c380"
   }
 }]]></component>
   <component name="ProjectColorInfo">{
@@ -41,6 +43,7 @@
     "Python.scene.executor": "Run",
     "Python.utils.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "v2"
   }
 }]]></component>
@@ -74,11 +77,20 @@
       <option name="project" value="LOCAL" />
       <updated>1734822330196</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="general quality improvements and scene changed to loo´k more like a actual room also made the sphere blue for contrast">
+      <option name="closed" value="true" />
+      <created>1734825315462</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1734825315462</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="master branch" />
-    <option name="LAST_COMMIT_MESSAGE" value="master branch" />
+    <MESSAGE value="general quality improvements and scene changed to loo´k more like a actual room also made the sphere blue for contrast" />
+    <option name="LAST_COMMIT_MESSAGE" value="general quality improvements and scene changed to loo´k more like a actual room also made the sphere blue for contrast" />
   </component>
 </project>
