@@ -14,29 +14,42 @@ Gamma Correction: Ensures the final image has realistic brightness and contrast.
 
 
 Getting Started:
+
 Prerequisites
+
 Python 3.8 or higher
+
 Libraries:
 numpy
 matplotlib
+
 To install the required libraries:
 
-
 bash
+
 pip install numpy matplotlib
+
 Installation
+
 Clone the repository:
 
 
 bash
+
 git clone https://github.com/your-username/python-ray-tracer.git
 cd python-ray-tracer
+
 Run the main script:
 
+
 bash
+
 Code kopieren
+
 python main.py
+
 Project Structure
+
 ├── main.py                   # Entry point for the ray tracer
 ├── raytracer
 │   ├── camera.py             # Camera class for generating rays
@@ -51,6 +64,7 @@ Project Structure
 
 
 How It Works
+
 Scene Setup:
 
 Define a scene by adding objects (e.g., spheres, boxes) and light sources.
