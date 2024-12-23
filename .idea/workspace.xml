@@ -4,17 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3dfe3fbb-a385-4de4-bb52-f774817c8100" name="Changes" comment="general improvements mostly to the renderer but still have to improve image quality">
+    <list default="true" id="3dfe3fbb-a385-4de4-bb52-f774817c8100" name="Changes" comment="trying to improve but make it worse its now borked xd">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/raytracer/camera.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/camera.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/raytracer/geometry.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/geometry.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/raytracer/lighting.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/lighting.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/raytracer/materials.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/materials.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/raytracer/ray.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/ray.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/raytracer/renderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/renderer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/raytracer/scene.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/scene.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/raytracer/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +135,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734906690604</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="trying to improve but make it worse its now borked xd">
+      <option name="closed" value="true" />
+      <created>1734909661505</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1734909661505</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -147,6 +152,7 @@
     <MESSAGE value="implementing cuda" />
     <MESSAGE value="implementing cuda and fixing the scene to make it a sphere in a grey room again" />
     <MESSAGE value="general improvements mostly to the renderer but still have to improve image quality" />
-    <option name="LAST_COMMIT_MESSAGE" value="general improvements mostly to the renderer but still have to improve image quality" />
+    <MESSAGE value="trying to improve but make it worse its now borked xd" />
+    <option name="LAST_COMMIT_MESSAGE" value="trying to improve but make it worse its now borked xd" />
   </component>
 </project>
