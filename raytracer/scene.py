@@ -26,3 +26,13 @@ class Scene:
         :return: List of lights
         """
         return self.lights
+    def add_light(self, light):
+        """
+        Adds a light source to the scene.
+
+        :param light: A dictionary with keys:
+            - "position": [x, y, z]
+            - "color": [r, g, b]
+            - "intensity": float
+        """
+        self.lights.append(light)

@@ -1,7 +1,7 @@
 import numpy as np
 from numba import cuda, float32
 from math import sqrt
-from raytracer.geometry import Sphere, Plane, Box
+from raytracer.geometry import Sphere, Box
 from raytracer.materials import Material
 from raytracer.lighting import calculate_lighting
 
@@ -188,9 +188,6 @@ class Renderer:
             elif isinstance(obj, Box):
                 # Serialize box: [type, min_x, min_y, min_z, max_x, max_y, max_z, material_color_r, g, b, shininess, placeholder]
                 serialized_obj = [3, *obj.min_corner, *obj.max_corner, *obj.material.color, obj.material.shininess, 0.0]
-            elif isinstance(obj, Plane):
-                # Serialize plane: [type, point_x, point_y, point_z, normal_x, normal_y, normal_z, material_color_r, g, b, shininess, placeholder]
-                serialized_obj = [2, *obj.point, *obj.normal, *obj.material.color, obj.material.shininess, 0.0]
             else:
                 raise ValueError(f"Unsupported object type: {type(obj)}")
 

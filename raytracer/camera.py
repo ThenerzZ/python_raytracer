@@ -1,21 +1,28 @@
 import numpy as np
 
 class Camera:
-    def __init__(self, position, look_at, up, fov, aspect_ratio):
+    def __init__(self, position, forward, up, right):
+        """
+        Camera setup for the scene.
+
+        :param position: The position of the camera [x, y, z]
+        :param forward: The forward direction vector of the camera [x, y, z]
+        :param up: The up direction vector of the camera [x, y, z]
+        :param right: The right direction vector of the camera [x, y, z]
+        """
         self.position = np.array(position, dtype=np.float32)
-        self.forward = np.array(look_at, dtype=np.float32) - self.position
-        self.forward = self.forward / np.linalg.norm(self.forward)
+        self.forward = np.array(forward, dtype=np.float32)
+        self.up = np.array(up, dtype=np.float32)
+        self.right = np.array(right, dtype=np.float32)
 
-        self.right = np.cross(self.forward, np.array(up, dtype=np.float32))
-        self.right = self.right / np.linalg.norm(self.right)
+    def get_position(self):
+        return self.position
 
-        self.up = np.cross(self.right, self.forward)
-        self.fov = fov
-        self.aspect_ratio = aspect_ratio
+    def get_forward(self):
+        return self.forward
 
-    def generate_ray(self, u, v):
-        alpha = np.tan(np.radians(self.fov) / 2.0) * (2 * u - 1) * self.aspect_ratio
-        beta = np.tan(np.radians(self.fov) / 2.0) * (1 - 2 * v)
-        direction = self.forward + alpha * self.right + beta * self.up
-        direction = direction / np.linalg.norm(direction)
-        return Ray(self.position, direction)
+    def get_up(self):
+        return self.up
+
+    def get_right(self):
+        return self.right

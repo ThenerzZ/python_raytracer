@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3dfe3fbb-a385-4de4-bb52-f774817c8100" name="Changes" comment="trying to improve but make it worse its now borked xd">
+    <list default="true" id="3dfe3fbb-a385-4de4-bb52-f774817c8100" name="Changes" comment="updatet to incorporate new obj structure and render improvements">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/raytracer/camera.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/camera.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/raytracer/geometry.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/geometry.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/raytracer/lighting.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/lighting.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/raytracer/materials.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/materials.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/raytracer/renderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/renderer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/raytracer/scene.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/scene.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -143,7 +142,55 @@
       <option name="project" value="LOCAL" />
       <updated>1734909661505</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="updatet the scnene">
+      <option name="closed" value="true" />
+      <created>1734944437443</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1734944437443</updated>
+    </task>
+    <task id="LOCAL-00010" summary="general imporovements and 3d structure support">
+      <option name="closed" value="true" />
+      <created>1734944455817</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1734944455817</updated>
+    </task>
+    <task id="LOCAL-00011" summary="3d structure support for walls etc">
+      <option name="closed" value="true" />
+      <created>1734944472420</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1734944472420</updated>
+    </task>
+    <task id="LOCAL-00012" summary="small imporovements on diffusion and raycasting">
+      <option name="closed" value="true" />
+      <created>1734944490100</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1734944490100</updated>
+    </task>
+    <task id="LOCAL-00013" summary="updatet to incorporate new obj structure and render improvements">
+      <option name="closed" value="true" />
+      <created>1734944518447</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1734944518447</updated>
+    </task>
+    <task id="LOCAL-00014" summary="updatet to incorporate new obj structure and render improvements">
+      <option name="closed" value="true" />
+      <created>1734944520742</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1734944520742</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -153,6 +200,11 @@
     <MESSAGE value="implementing cuda and fixing the scene to make it a sphere in a grey room again" />
     <MESSAGE value="general improvements mostly to the renderer but still have to improve image quality" />
     <MESSAGE value="trying to improve but make it worse its now borked xd" />
-    <option name="LAST_COMMIT_MESSAGE" value="trying to improve but make it worse its now borked xd" />
+    <MESSAGE value="updatet the scnene" />
+    <MESSAGE value="general imporovements and 3d structure support" />
+    <MESSAGE value="3d structure support for walls etc" />
+    <MESSAGE value="small imporovements on diffusion and raycasting" />
+    <MESSAGE value="updatet to incorporate new obj structure and render improvements" />
+    <option name="LAST_COMMIT_MESSAGE" value="updatet to incorporate new obj structure and render improvements" />
   </component>
 </project>

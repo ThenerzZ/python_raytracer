@@ -1,90 +1,77 @@
 from raytracer.scene import Scene
-from raytracer.geometry import Sphere, Box  # Ensure Box is imported
-from raytracer.materials import Material
-from raytracer.lighting import Light
 from raytracer.camera import Camera
 from raytracer.renderer import Renderer
+from raytracer.geometry import Sphere, Box
+from raytracer.materials import MIRROR, GLASS, Material
+import numpy as np
 import matplotlib.pyplot as plt
 
 def main():
-    # Initialize the scene
+    # Scene setup
     scene = Scene()
 
-    # Define room dimensions
-    room_size = 10.0
-    wall_thickness = 0.1
+    # Add walls using boxes to form a 3D room
+    floor_material = Material(color=[0.9, 0.9, 0.9], shininess=32, reflectivity=0.3)  # Light grey floor
+    ceiling_material = Material(color=[0.7, 0.7, 0.9], shininess=32, reflectivity=0.3)  # Light blue ceiling
+    wall_material_back = Material(color=[1.0, 1.0, 0.0], shininess=8, reflectivity=0.1)  # Yellow back wall
+    wall_material_left = Material(color=[0.0, 1.0, 0.0], shininess=8, reflectivity=0.1)  # Green left wall
+    wall_material_right = Material(color=[1.0, 0.0, 0.0], shininess=8, reflectivity=0.1)  # Red right wall
 
-    # Add walls (as boxes)
-    wall_material = Material(color=[0.5, 0.5, 0.5], shininess=8)
+    # Define the room dimensions
+    room_size = 5.0
 
-    # Floor
-    scene.add(Box(
-        min_corner=[-room_size, -room_size, -room_size],
-        max_corner=[room_size, -room_size + wall_thickness, room_size],
-        material=wall_material
-    ))
+    # Floor and ceiling
+    scene.add(Box(min_corner=[-room_size, -room_size, -room_size], max_corner=[room_size, -room_size + 0.1, room_size], material=floor_material))
+    scene.add(Box(min_corner=[-room_size, room_size - 0.1, -room_size], max_corner=[room_size, room_size, room_size], material=ceiling_material))
 
-    # Ceiling
-    scene.add(Box(
-        min_corner=[-room_size, room_size - wall_thickness, -room_size],
-        max_corner=[room_size, room_size, room_size],
-        material=wall_material
-    ))
+    # Walls
+    scene.add(Box(min_corner=[-room_size, -room_size, -room_size], max_corner=[room_size, room_size, -room_size + 0.1], material=wall_material_back))  # Back wall
+    scene.add(Box(min_corner=[-room_size, -room_size, -room_size], max_corner=[-room_size + 0.1, room_size, room_size], material=wall_material_left))  # Left wall
+    scene.add(Box(min_corner=[room_size - 0.1, -room_size, -room_size], max_corner=[room_size, room_size, room_size], material=wall_material_right))  # Right wall
 
-    # Back wall
-    scene.add(Box(
-        min_corner=[-room_size, -room_size, -room_size],
-        max_corner=[room_size, room_size, -room_size + wall_thickness],
-        material=wall_material
-    ))
+    # Add a reflective sphere in the center
+    reflective_sphere_material = MIRROR
+    scene.add(Sphere(center=[0, -room_size + 1.5, 0], radius=1, material=reflective_sphere_material))
 
-    # Front wall (not visible but prevents light from escaping)
-    scene.add(Box(
-        min_corner=[-room_size, -room_size, room_size - wall_thickness],
-        max_corner=[room_size, room_size, room_size],
-        material=wall_material
-    ))
+    # Add a glass sphere near the right wall
+    glass_sphere_material = GLASS
+    scene.add(Sphere(center=[2, -room_size + 1.5, 2], radius=1, material=glass_sphere_material))
 
-    # Left wall
-    scene.add(Box(
-        min_corner=[-room_size, -room_size, -room_size],
-        max_corner=[-room_size + wall_thickness, room_size, room_size],
-        material=wall_material
-    ))
+    # Add primary light source
+    scene.add_light({
+        "position": [0, room_size - 1, 0],  # Slightly lower light source
+        "color": [1.0, 1.0, 1.0],
+        "intensity": 200.0  # Reduced intensity for balanced illumination
+    })
 
-    # Right wall
-    scene.add(Box(
-        min_corner=[room_size - wall_thickness, -room_size, -room_size],
-        max_corner=[room_size, room_size, room_size],
-        material=wall_material
-    ))
+    # Add secondary light source
+    scene.add_light({
+        "position": [-2, room_size - 1, 2],
+        "color": [0.5, 0.5, 0.5],
+        "intensity": 100.0  # Secondary light for better ambient effect
+    })
 
-    # Add a sphere in the center of the room
-    sphere_material = Material(color=[0.0, 0.0, 1.0], shininess=32)
-    scene.add(Sphere(center=[0, 0, 0], radius=1, material=sphere_material))
+    # Camera setup
+    camera = Camera(position=[0, 0, -20], forward=[0, 0, 1], up=[0, 1, 0], right=[1, 0, 0])
 
-    # Add a light source behind the camera
-    light = Light(position=[0, 0, 8], color=[1.0, 1.0, 1.0], intensity=50.0)
-    scene.add(light.to_dict())
+    # Renderer setup
+    renderer = Renderer(width=800, height=600, samples_per_pixel=4)
 
-    # Initialize the camera
-    camera = Camera(
-        position=[0, 0, 8],
-        look_at=[0, 0, 0],
-        up=[0, 1, 0],
-        fov=60,
-        aspect_ratio=16 / 9
-    )
+    # Debugging scene objects and lights
+    print("Scene Objects:")
+    for obj in scene.get_objects():
+        print(obj)
 
-    # Create the renderer
-    renderer = Renderer(width=800, height=450, samples_per_pixel=10)
+    print("Scene Lights:")
+    for light in scene.get_lights():
+        print(light)
 
     # Render the scene
     image = renderer.render(scene, camera)
 
-    # Display the rendered image
+    # Display the image
     plt.imshow(image)
-    plt.axis('off')
+    plt.axis("off")
     plt.show()
 
 if __name__ == "__main__":
