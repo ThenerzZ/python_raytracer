@@ -1,0 +1,98 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"3dfe3fbb-a385-4de4-bb52-f774817c8100\" name=\"Changes\" comment=\"updatet to incorporate new obj structure and render improvements\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/main.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/main.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/raytracer/camera.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/raytracer/camera.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/raytracer/geometry.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/raytracer/geometry.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/raytracer/materials.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/raytracer/materials.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/raytracer/scene.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/raytracer/scene.py\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;ThenerzZ&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/ThenerzZ/python_raytracer.git&quot;,\r\n    &quot;accountId&quot;: &quot;790c0d3d-c5e6-488d-84f7-ba601c59c380&quot;\r\n  }\r\n}</component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 8\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2qXmoqCATKd4Nhiqa41eIG10aXH\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Python.main.executor&quot;: &quot;Run&quot;,\r\n    &quot;Python.renderer.executor&quot;: &quot;Run&quot;,\r\n    &quot;Python.scene.executor&quot;: &quot;Run&quot;,\r\n    &quot;Python.test.executor&quot;: &quot;Run&quot;,\r\n    &quot;Python.utils.executor&quot;: &quot;Run&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;main&quot;,\r\n    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.fileTypes&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"E:\\python_raytracer\" />\r\n      <recent name=\"E:\\Pyhton_raytracer\" />\r\n      <recent name=\"E:\\Pyhton_raytracer\\raytracer\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-python-sdk-495700d161d3-aa17d162503b-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-243.22562.220\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"3dfe3fbb-a385-4de4-bb52-f774817c8100\" name=\"Changes\" comment=\"\" />\r\n      <created>1734817472567</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1734817472567</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"master branch\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734822330196</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734822330196</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"general quality improvements and scene changed to loo´k more like a actual room also made the sphere blue for contrast\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734825315462</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734825315462</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"implementing cuda\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734868867115</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734868867115</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"implementing cuda\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734891245776</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734891245776</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"implementing cuda\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734892718960</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734892718960</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"implementing cuda and fixing the scene to make it a sphere in a grey room again\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734896245491</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734896245491</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"general improvements mostly to the renderer but still have to improve image quality\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734906690604</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734906690604</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"trying to improve but make it worse its now borked xd\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734909661505</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734909661505</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"updatet the scnene\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734944437443</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734944437443</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"general imporovements and 3d structure support\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734944455817</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734944455817</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"3d structure support for walls etc\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734944472420</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734944472420</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"small imporovements on diffusion and raycasting\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734944490100</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734944490100</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00013\" summary=\"updatet to incorporate new obj structure and render improvements\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734944518447</created>\r\n      <option name=\"number\" value=\"00013\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734944518447</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00014\" summary=\"updatet to incorporate new obj structure and render improvements\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1734944520742</created>\r\n      <option name=\"number\" value=\"00014\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1734944520742</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"15\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"master branch\" />\r\n    <MESSAGE value=\"general quality improvements and scene changed to loo´k more like a actual room also made the sphere blue for contrast\" />\r\n    <MESSAGE value=\"implementing cuda\" />\r\n    <MESSAGE value=\"implementing cuda and fixing the scene to make it a sphere in a grey room again\" />\r\n    <MESSAGE value=\"general improvements mostly to the renderer but still have to improve image quality\" />\r\n    <MESSAGE value=\"trying to improve but make it worse its now borked xd\" />\r\n    <MESSAGE value=\"updatet the scnene\" />\r\n    <MESSAGE value=\"general imporovements and 3d structure support\" />\r\n    <MESSAGE value=\"3d structure support for walls etc\" />\r\n    <MESSAGE value=\"small imporovements on diffusion and raycasting\" />\r\n    <MESSAGE value=\"updatet to incorporate new obj structure and render improvements\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"updatet to incorporate new obj structure and render improvements\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision e4802ff284b6af7f0a8cd86b992f50f9f1ff7edf)
++++ b/.idea/workspace.xml	(date 1734946670252)
+@@ -4,13 +4,8 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="3dfe3fbb-a385-4de4-bb52-f774817c8100" name="Changes" comment="updatet to incorporate new obj structure and render improvements">
++    <list default="true" id="3dfe3fbb-a385-4de4-bb52-f774817c8100" name="Changes" comment="made some changes doesnt nececarily work better than other version output kinda bad ngl">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/raytracer/camera.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/camera.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/raytracer/geometry.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/geometry.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/raytracer/materials.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/materials.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/raytracer/scene.py" beforeDir="false" afterPath="$PROJECT_DIR$/raytracer/scene.py" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -18,6 +13,11 @@
+     <option name="LAST_RESOLUTION" value="IGNORE" />
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="main" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="GitHubPullRequestSearchHistory">{
+@@ -41,20 +41,20 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+-    &quot;Python.renderer.executor&quot;: &quot;Run&quot;,
+-    &quot;Python.scene.executor&quot;: &quot;Run&quot;,
+-    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+-    &quot;Python.utils.executor&quot;: &quot;Run&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.fileTypes&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "Python.main.executor": "Run",
++    "Python.renderer.executor": "Run",
++    "Python.scene.executor": "Run",
++    "Python.test.executor": "Run",
++    "Python.utils.executor": "Run",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "RunOnceActivity.git.unshallow": "true",
++    "git-widget-placeholder": "testing",
++    "ignore.virus.scanning.warn.message": "true",
++    "settings.editor.selected.configurable": "preferences.fileTypes"
+   }
+-}</component>
++}]]></component>
+   <component name="RecentsManager">
+     <key name="MoveFile.RECENT_KEYS">
+       <recent name="E:\python_raytracer" />
+@@ -190,7 +190,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1734944520742</updated>
+     </task>
+-    <option name="localTasksCounter" value="15" />
++    <task id="LOCAL-00015" summary="made some changes doesnt nececarily work better than other version output kinda bad ngl">
++      <option name="closed" value="true" />
++      <created>1734946657386</created>
++      <option name="number" value="00015" />
++      <option name="presentableId" value="LOCAL-00015" />
++      <option name="project" value="LOCAL" />
++      <updated>1734946657386</updated>
++    </task>
++    <option name="localTasksCounter" value="16" />
+     <servers />
+   </component>
+   <component name="VcsManagerConfiguration">
+@@ -205,6 +213,7 @@
+     <MESSAGE value="3d structure support for walls etc" />
+     <MESSAGE value="small imporovements on diffusion and raycasting" />
+     <MESSAGE value="updatet to incorporate new obj structure and render improvements" />
+-    <option name="LAST_COMMIT_MESSAGE" value="updatet to incorporate new obj structure and render improvements" />
++    <MESSAGE value="made some changes doesnt nececarily work better than other version output kinda bad ngl" />
++    <option name="LAST_COMMIT_MESSAGE" value="made some changes doesnt nececarily work better than other version output kinda bad ngl" />
+   </component>
+ </project>
+\ No newline at end of file

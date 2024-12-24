@@ -132,7 +132,7 @@ def render_kernel(scene_data, camera_data, output, width, height, samples_per_pi
             dot += hit_normal[i] * light_dir[i]
         dot = max(0.0, dot)
         for i in range(3):
-            color[i] += attenuation * dot * light_data[3 + i] * scene_data[hit_object, 5 + i]
+            color[i] += attenuation * dot * light_data[3 + i] * obj[5 + i]
 
         # Specular shading
         view_dir = cuda.local.array(3, dtype=float32)
@@ -151,7 +151,7 @@ def render_kernel(scene_data, camera_data, output, width, height, samples_per_pi
         for i in range(3):
             spec_dot += hit_normal[i] * halfway_dir[i]
         spec_dot = max(0.0, spec_dot)
-        shininess = scene_data[hit_object, 8]
+        shininess = obj[8]
         specular = pow(spec_dot, shininess)
         for i in range(3):
             color[i] += attenuation * specular * light_data[3 + i]
@@ -183,16 +183,19 @@ class Renderer:
         scene_data_np = []
         for obj in scene.get_objects():
             if isinstance(obj, Sphere):
-                # Serialize sphere: [type, center_x, center_y, center_z, radius, material_color_r, g, b, shininess, placeholder1, placeholder2]
-                serialized_obj = [1, *obj.center, obj.radius, *obj.material.color, obj.material.shininess, 0.0, 0.0, 0.0]
+                # Serialize sphere: [type, center_x, center_y, center_z, radius, material_color_r, g, b, shininess]
+                material = obj.material
+                serialized_obj = [
+                    1, *obj.center, obj.radius, *material.color, material.shininess
+                ]
             elif isinstance(obj, Box):
-                # Serialize box: [type, min_x, min_y, min_z, max_x, max_y, max_z, material_color_r, g, b, shininess, placeholder]
-                serialized_obj = [3, *obj.min_corner, *obj.max_corner, *obj.material.color, obj.material.shininess, 0.0]
+                # Serialize box: [type, min_x, min_y, min_z, max_x, max_y, max_z, material_color_r, g, b, shininess]
+                material = obj.material
+                serialized_obj = [
+                    3, *obj.min_corner, *obj.max_corner, *material.color, material.shininess
+                ]
             else:
                 raise ValueError(f"Unsupported object type: {type(obj)}")
-
-            if len(serialized_obj) != 12:
-                raise ValueError(f"Serialized object has incorrect size: {serialized_obj}")
 
             scene_data_np.append(serialized_obj)
 
